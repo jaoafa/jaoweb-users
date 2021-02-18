@@ -26,7 +26,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@mdi/font/css/materialdesignicons.css'],
+  css: ['ress', '@mdi/font/css/materialdesignicons.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/axios-accessor'],
@@ -73,5 +73,6 @@ export default {
   recaptcha: {
     siteKey: '6Lfx01oaAAAAAEpbNZxACNq6O1S722415hpcDDF8',
     version: 3,
+    hideBadge: true,
   },
 }

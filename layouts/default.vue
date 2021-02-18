@@ -3,24 +3,48 @@
     <Header />
     <main>
       <Nuxt />
-      <ModalWindow v-if="isOpenModal()" />
+      <ModalWindow v-if="isOpen" />
     </main>
     <Footer />
   </div>
 </template>
-<script>
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+<script lang="ts">
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 import { DataStore } from '~/store'
+
+interface DataType {
+  isOpen: boolean
+}
+
 export default {
   components: {
     Header,
     Footer,
   },
-  methods: {
-    isOpenModal() {
-      return DataStore.getModalMessage != null
+  data(): DataType {
+    return {
+      isOpen: false,
+    }
+  },
+  computed: {
+    changeModalMessage() {
+      return DataStore.getModalMessage
     },
+  },
+  watch: {
+    changeModalMessage() {
+      this.$nextTick(() => {
+        this.isOpen = DataStore.getModalMessage != null
+        console.log('changeModalMessage', DataStore.getModalMessage)
+      })
+    },
+  },
+  created() {
+    this.$nextTick(() => {
+      this.isOpen = DataStore.getModalMessage != null
+      console.log('changeModalMessage', DataStore.getModalMessage)
+    })
   },
 }
 </script>

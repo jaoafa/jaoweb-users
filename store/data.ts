@@ -1,4 +1,9 @@
-import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators'
+import { Module, Mutation, VuexModule } from 'vuex-module-decorators'
+
+interface showModalModel {
+  title: String
+  message: String
+}
 
 @Module({
   name: 'data',
@@ -42,14 +47,24 @@ export default class Datas extends VuexModule {
   }
 
   /**
+   * Set the Modal Window Title.
+   * @param uuid UUID
+   */
+  @Mutation
+  public setModalTitle(title: String) {
+    this.modalTitle = title
+  }
+
+  /**
    * Show the Modal Window
    * @param title Modal Window Title
    * @param message Modal Window Message
    */
   @Mutation
-  public showModal(title: String, message: String) {
-    this.modalTitle = title
-    this.modalMessage = message
+  public showModal(obj: showModalModel) {
+    console.log('showModal', obj.title, obj.message)
+    this.modalTitle = obj.title
+    this.modalMessage = obj.message
   }
 
   /**
@@ -61,13 +76,5 @@ export default class Datas extends VuexModule {
   public closeModal() {
     this.modalTitle = null
     this.modalMessage = null
-  }
-
-  /**
-   * Fetch the User Data
-   */
-  @Action({ rawError: true })
-  public async fetchUser() {
-    // TODO ユーザーデータのフェッチ
   }
 }

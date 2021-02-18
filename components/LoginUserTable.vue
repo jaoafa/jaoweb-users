@@ -57,17 +57,20 @@ export default Vue.extend({
         })
         .then((response) => {
           if ('error' in response.data) {
-            DataStore.showModal('[Error | LoginUserTable]', response.data.error)
+            DataStore.showModal({
+              title: `[Error | ${this.$options.name}]`,
+              message: response.data.error,
+            })
             return
           }
           this.recentLogins = response.data
         })
         .catch((error) => {
-          DataStore.showModal(
-            '[Error | LoginUserTable]',
-            `エラーが発生しました。数分後にもう一度お試しいただき、解決しなければ運営にご連絡ください。<br>
-            ${error}`
-          )
+          DataStore.showModal({
+            title: `[Error | ${this.$options.name}]`,
+            message: `エラーが発生しました。数分後にもう一度お試しいただき、解決しなければ運営にご連絡ください。<br>
+            ${error}`,
+          })
         })
     })
   },
@@ -75,8 +78,26 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+@mixin smartphone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
 table {
   width: 100%;
+  min-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  @include smartphone {
+    display: block;
+  }
+
+  thead,
+  tbody {
+    width: 100%;
+  }
 
   tbody tr {
     border-bottom: solid 1px #eee;
@@ -103,7 +124,7 @@ table {
 }
 
 .user-btn {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   background: #ffb41d;
   height: 2.5em;

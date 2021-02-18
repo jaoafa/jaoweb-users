@@ -48,7 +48,7 @@ export default Vue.extend({
   methods: {
     onSearch() {
       if (this.mcid !== '') this.disableSearchBtn = false
-      setTimeout(() => {
+      this.$nextTick(() => {
         this.$recaptcha.execute('login').then((token: string) => {
           axios
             .get('https://api.jaoafa.com/v2/users/search/prefix', {
@@ -59,23 +59,23 @@ export default Vue.extend({
             })
             .then((response) => {
               if ('error' in response.data) {
-                DataStore.showModal(
-                  '[Error | LoginUserTable]',
-                  response.data.error
-                )
+                DataStore.showModal({
+                  title: `[Error | ${this.$options.name}]`,
+                  message: response.data.error,
+                })
                 return
               }
               this.suggestUsers = response.data
             })
             .catch((error) => {
-              DataStore.showModal(
-                '[Error | LoginUserTable]',
-                `エラーが発生しました。数分後にもう一度お試しいただき、解決しなければ運営にご連絡ください。<br>
-                  ${error}`
-              )
+              DataStore.showModal({
+                title: `[Error | ${this.$options.name}]`,
+                message: `エラーが発生しました。数分後にもう一度お試しいただき、解決しなければ運営にご連絡ください。<br>
+                  ${error}`,
+              })
             })
         })
-      }, 100)
+      })
     },
     onSubmit(event: { keyCode: number }) {
       if (event.keyCode !== undefined && event.keyCode !== 13) return

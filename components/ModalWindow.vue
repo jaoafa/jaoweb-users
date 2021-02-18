@@ -34,6 +34,7 @@ export default {
   methods: {
     close() {
       DataStore.closeModal()
+      this.$emit('close')
     },
   },
 }

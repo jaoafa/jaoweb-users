@@ -97,8 +97,21 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+@mixin smartphone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
 table {
   width: 100%;
+  min-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  @include smartphone {
+    display: block;
+  }
 
   tbody tr {
     border-bottom: solid 1px #eee;
@@ -125,7 +138,7 @@ table {
 }
 
 .user-btn {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   background: #ffb41d;
   height: 2.5em;
