@@ -5,14 +5,14 @@
       <h1>jMS Users</h1>
     </router-link>
     <div class="header-nav">
-      <div class="back-to-main">
+      <div class="link back-to-main">
         <a
           href="https://jaoafa.com/"
           title="Back to Main Site"
           class="mdi mdi-home"
         ></a>
       </div>
-      <div class="github-link">
+      <div class="link github-link">
         <a
           href="https://github.com/jaoafa/jaoweb-users"
           title="Go to GitHub repository"
@@ -22,10 +22,6 @@
     </div>
   </header>
 </template>
-
-<script>
-export default {}
-</script>
 
 <style lang="scss" scoped>
 @mixin pc {
@@ -74,6 +70,11 @@ header {
     display: flex;
     white-space: nowrap;
     color: #eee;
+  }
+
+  .link:hover {
+    transition: 0.5s;
+    opacity: 0.5;
   }
 
   .back-to-main a {

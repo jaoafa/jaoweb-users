@@ -8,62 +8,76 @@
       </p>
       <p class="when">{{ updateAt }} 現在</p>
     </div>
-    <table v-if="global.length != 0 || local.length != 0" class="mcbans-table">
-      <thead>
-        <tr>
-          <th>種別</th>
-          <th>ID</th>
-          <th>Server</th>
-          <th>Banned by</th>
-          <th>理由</th>
-          <th>登録日時</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in global" :key="item.id">
-          <td>Global</td>
-          <td>
-            <a :href="'https://mcbans.com/ban/' + item.id">{{ item.id }}</a>
-          </td>
-          <td>
-            <a :href="'https://www.mcbans.com/server/' + item.server + '/'">
-              {{ item.server }}
-            </a>
-          </td>
-          <td>
-            <a :href="'https://www.mcbans.com/player/' + item.bannedBy + '/'">
-              {{ item.bannedBy }}
-            </a>
-          </td>
-          <td>{{ item.reason }}</td>
-          <td>{{ item.date }}</td>
-        </tr>
-        <tr v-for="item in local" :key="item.id">
-          <td>Local</td>
-          <td>
-            <a :href="'https://mcbans.com/ban/' + item.id">{{ item.id }}</a>
-          </td>
-          <td>
-            <a :href="'https://www.mcbans.com/server/' + item.server + '/'">
-              {{ item.server }}
-            </a>
-          </td>
-          <td>
-            <a :href="'https://www.mcbans.com/player/' + item.bannedBy + '/'">
-              {{ item.bannedBy }}
-            </a>
-          </td>
-          <td>{{ item.reason }}</td>
-          <td>{{ item.date }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table">
+      <table class="mcbans-table">
+        <thead>
+          <tr>
+            <th>種別</th>
+            <th>ID</th>
+            <th>Server</th>
+            <th>Banned by</th>
+            <th>理由</th>
+            <th>登録日時</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in global" :key="item.id">
+            <td data-type="Global">Global</td>
+            <td>
+              <a :href="'https://mcbans.com/ban/' + item.id">{{ item.id }}</a>
+            </td>
+            <td>
+              <a :href="'https://www.mcbans.com/server/' + item.server + '/'">
+                {{ item.server }}
+              </a>
+            </td>
+            <td>
+              <a :href="'https://www.mcbans.com/player/' + item.bannedBy + '/'">
+                {{ item.bannedBy }}
+              </a>
+            </td>
+            <td>{{ item.reason }}</td>
+            <td>{{ item.date }}</td>
+          </tr>
+          <tr v-for="item in local" :key="item.id">
+            <td data-type="Local">Local</td>
+            <td>
+              <a :href="'https://mcbans.com/ban/' + item.id">{{ item.id }}</a>
+            </td>
+            <td>
+              <a :href="'https://www.mcbans.com/server/' + item.server + '/'">
+                {{ item.server }}
+              </a>
+            </td>
+            <td>
+              <a :href="'https://www.mcbans.com/player/' + item.bannedBy + '/'">
+                {{ item.bannedBy }}
+              </a>
+            </td>
+            <td>{{ item.reason }}</td>
+            <td>{{ item.date }}</td>
+          </tr>
+          <tr
+            v-if="!loading && global.length === 0 && local.length === 0"
+            class="not-exist"
+          >
+            <td colspan="6">Data does not exist.</td>
+          </tr>
+          <tr v-if="loading">
+            <td colspan="6">
+              <vue-loading type="spiningDubbles" color="#000" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
+import { VueLoading } from 'vue-loading-template'
 import { DataStore } from '~/store'
 
 interface Ban {
@@ -81,10 +95,14 @@ interface DataType {
   updateAt: string
   global: Ban[]
   local: Ban[]
+  loading: boolean
 }
 
 export default Vue.extend({
   name: 'MCBansTable',
+  components: {
+    VueLoading,
+  },
   data(): DataType {
     return {
       reputation: 10,
@@ -93,6 +111,7 @@ export default Vue.extend({
       updateAt: '',
       global: [],
       local: [],
+      loading: true,
     }
   },
   computed: {
@@ -143,18 +162,24 @@ export default Vue.extend({
             this.updateAt = response.data.data.updated_at
 
             for (const banId of response.data.data.global_ids) {
-              this.fetchBanData(banId)
+              this.fetchBanData(true, banId)
             }
+
+            for (const banId of response.data.data.local_ids) {
+              this.fetchBanData(false, banId)
+            }
+
+            this.loading = false
           })
           .catch((error) => {
             DataStore.showModal({
-              title: '[Error | UserData]',
+              title: `[Error | ${this.$options.name}]`,
               message: `エラーが発生しました。数分後にもう一度お試しいただき、解決しなければ運営にご連絡ください。<br>${error}`,
             })
           })
       })
     },
-    fetchBanData(banId: number) {
+    fetchBanData(isGlobal: boolean, banId: number) {
       this.$recaptcha.execute('login').then((token: string) => {
         axios
           .get(`https://api.jaoafa.com/v1/users/mcbans/ban/${banId}`, {
@@ -170,7 +195,7 @@ export default Vue.extend({
               })
               return
             }
-            this.global.push({
+            ;(isGlobal ? this.global : this.local).push({
               id: banId,
               server: banResponse.data.data.server,
               bannedBy: banResponse.data.data.banned_by,
@@ -185,11 +210,19 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+$type-status-colors: (
+  Type-Global: #f00,
+  Type-Local: #ffa500,
+  Status-True: #f08080,
+  Status-False: #90ee90,
+);
+
 @mixin smartphone {
   @media (max-width: 480px) {
     @content;
   }
 }
+
 .mcbans-container {
   .overview {
     display: flex;
@@ -210,12 +243,21 @@ export default Vue.extend({
     }
   }
 
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
+
   table {
     width: 100%;
-    overflow-x: auto;
+    min-width: 100%;
     white-space: nowrap;
     border-collapse: collapse;
     text-align: center;
+
+    @include smartphone {
+      display: block;
+    }
 
     thead {
       border-bottom: solid 2px #ddd;
@@ -223,6 +265,24 @@ export default Vue.extend({
 
     th {
       background: #eee;
+    }
+
+    td {
+      &[data-type='Local'] {
+        background: map-get($type-status-colors, 'Type-Local');
+      }
+
+      &[data-type='Global'] {
+        background: map-get($type-status-colors, 'Type-Global');
+      }
+
+      &[data-status='true'] {
+        background: map-get($type-status-colors, 'Status-True');
+      }
+
+      &[data-status='false'] {
+        background: map-get($type-status-colors, 'Status-False');
+      }
     }
 
     th,

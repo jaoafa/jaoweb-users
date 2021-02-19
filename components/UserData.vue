@@ -20,20 +20,38 @@
       </div>
       <div class="user-data-names">
         <div class="user-name" :class="{ verified: data.isVerified }">
+          <vue-loading
+            v-if="data.username == null"
+            type="spiningDubbles"
+            color="#000"
+          />
           {{ data.username }}
         </div>
         <dl>
           <div>
             <dt>UUID</dt>
-            <dd>{{ data.uuid }}</dd>
+            <dd v-if="data.uuid == null">
+              <vue-loading type="spiningDubbles" color="#000" />
+            </dd>
+            <dd v-if="data.uuid != null">{{ data.uuid }}</dd>
           </div>
           <div>
             <dt>First login</dt>
-            <dd>{{ data.firstLogin }} ({{ data.firstHowManyAgo }}前)</dd>
+            <dd v-if="data.firstLogin == null">
+              <vue-loading type="spiningDubbles" color="#000" />
+            </dd>
+            <dd v-if="data.firstLogin != null">
+              {{ data.firstLogin }} ({{ data.firstHowManyAgo }}前)
+            </dd>
           </div>
           <div>
             <dt>Least login</dt>
-            <dd>{{ data.leastLogin }} ({{ data.leastHowManyAgo }}前)</dd>
+            <dd v-if="data.leastLogin == null">
+              <vue-loading type="spiningDubbles" color="#000" />
+            </dd>
+            <dd v-if="data.leastLogin != null">
+              {{ data.leastLogin }} ({{ data.leastHowManyAgo }}前)
+            </dd>
           </div>
         </dl>
       </div>
@@ -79,20 +97,20 @@ interface Socials {
 }
 
 interface UserInfoModel {
-  rankText: string
+  rankText: string | null
   rank: number
-  username: string
+  username: string | null
   isVerified: boolean
-  uuid: string
-  firstLogin: string
-  leastLogin: string
+  uuid: string | null
+  firstLogin: string | null
+  leastLogin: string | null
   firstHowManyAgo: string
   leastHowManyAgo: string
   socials: Socials
 }
 
 interface DataType {
-  userimg: string
+  userimg: string | null
   isLoadedUserImg: boolean
   data: UserInfoModel
 }
@@ -104,16 +122,16 @@ export default Vue.extend({
   },
   data(): DataType {
     return {
-      userimg: '',
+      userimg: null,
       isLoadedUserImg: false,
       data: {
-        rankText: '',
+        rankText: null,
         rank: 0,
-        username: '',
+        username: null,
         isVerified: false,
-        uuid: '',
-        firstLogin: '',
-        leastLogin: '',
+        uuid: null,
+        firstLogin: null,
+        leastLogin: null,
         firstHowManyAgo: '不明',
         leastHowManyAgo: '不明',
         socials: {
@@ -150,6 +168,7 @@ export default Vue.extend({
         DataStore.getUUID
       )
       if (DataStore.getUUID === null) {
+        this.isLoadedUserImg = false
         return
       }
       this.$recaptcha.execute('login').then((token: string) => {
@@ -302,7 +321,6 @@ $rank-colors: (
         font-family: 'Material Design Icons';
         content: '\f0791';
         color: #1da1f2;
-        padding: 5px;
       }
     }
 

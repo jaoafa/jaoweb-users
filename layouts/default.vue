@@ -2,6 +2,10 @@
   <div>
     <Header />
     <main>
+      <VAlert
+        :text="'本ユーザーページはベータ版です。不具合等が見つかりましたら tomachi#0310 までご連絡頂くか、GitHubでIssueを立ててください。'"
+        :type="'warn'"
+      />
       <Nuxt />
       <ModalWindow v-if="isOpen" />
     </main>
@@ -36,14 +40,12 @@ export default {
     changeModalMessage() {
       this.$nextTick(() => {
         this.isOpen = DataStore.getModalMessage != null
-        console.log('changeModalMessage', DataStore.getModalMessage)
       })
     },
   },
   created() {
     this.$nextTick(() => {
       this.isOpen = DataStore.getModalMessage != null
-      console.log('changeModalMessage', DataStore.getModalMessage)
     })
   },
 }

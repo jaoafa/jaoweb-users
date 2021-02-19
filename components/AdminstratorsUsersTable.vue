@@ -1,31 +1,35 @@
 <template>
-  <table class="users-table">
-    <thead>
-      <tr>
-        <th>Role</th>
-        <th>Minecraft ID</th>
-        <th>Group</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item in adminstrators" :key="item.id">
-        <td>{{ item.role }}</td>
-        <td>
-          <img
-            :src="'https://crafatar.com/avatars/' + item.uuid + '?overlay=true'"
-          />{{ item.id }}
-        </td>
-        <td>{{ item.group }}</td>
-        <td>
-          <router-link
-            class="user-btn"
-            :to="{ path: `/${item.uuid}` }"
-          ></router-link>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Minecraft ID</th>
+          <th>Group</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in adminstrators" :key="item.id">
+          <td>{{ item.role }}</td>
+          <td>
+            <img
+              :src="
+                'https://crafatar.com/avatars/' + item.uuid + '?overlay=true'
+              "
+            />{{ item.id }}
+          </td>
+          <td>{{ item.group }}</td>
+          <td>
+            <router-link
+              class="user-btn"
+              :to="{ path: `/${item.uuid}` }"
+            ></router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -103,18 +107,20 @@ export default Vue.extend({
   }
 }
 
+.table {
+  display: block;
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   min-width: 100%;
-  overflow-x: auto;
   white-space: nowrap;
-
-  @include smartphone {
-    display: block;
-  }
+  border-collapse: collapse;
+  text-align: center;
 
   tbody tr {
-    border-bottom: solid 1px #eee;
+    border-top: solid 1px #eee;
   }
 
   tbody tr:hover {
@@ -145,12 +151,17 @@ table {
   line-height: 2.5em;
   width: 100px;
   cursor: pointer;
-}
 
-.user-btn::before {
-  font-family: 'Material Design Icons';
-  content: '\f0004';
-  color: #fff;
-  font-size: 1.5em;
+  &:hover {
+    transition: 0.5s;
+    opacity: 0.5;
+  }
+
+  &::before {
+    font-family: 'Material Design Icons';
+    content: '\f0004';
+    color: #fff;
+    font-size: 1.5em;
+  }
 }
 </style>

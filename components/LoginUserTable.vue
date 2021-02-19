@@ -1,34 +1,47 @@
 <template>
-  <table class="users-table">
-    <thead>
-      <tr>
-        <th>Minecraft ID</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item in recentLogins" :key="item.id">
-        <td>
-          <img
-            :src="'https://crafatar.com/avatars/' + item.uuid + '?overlay=true'"
-          />{{ item.mcid }}
-        </td>
-        <td>{{ item.date }}</td>
-        <td>
-          <router-link
-            class="user-btn"
-            :to="{ path: `/${item.uuid}` }"
-          ></router-link>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Minecraft ID</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in recentLogins" :key="item.id">
+          <td>
+            <img
+              :src="
+                'https://crafatar.com/avatars/' + item.uuid + '?overlay=true'
+              "
+            />{{ item.mcid }}
+          </td>
+          <td>{{ item.date }}</td>
+          <td>
+            <router-link
+              class="user-btn"
+              :to="{ path: `/${item.uuid}` }"
+            ></router-link>
+          </td>
+        </tr>
+        <tr v-if="!loading && recentLogins.length === 0" class="not-exist">
+          <td colspan="2">Data does not exist.</td>
+        </tr>
+        <tr v-if="loading">
+          <td colspan="2">
+            <vue-loading type="spiningDubbles" color="#000" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios'
 import Vue from 'vue'
+import { VueLoading } from 'vue-loading-template'
 import { DataStore } from '~/store'
 
 interface LoginUser {
@@ -38,19 +51,26 @@ interface LoginUser {
   date: string
 }
 
+interface DataType {
+  recentLogins: LoginUser[]
+  loading: boolean
+}
+
 export default Vue.extend({
   name: 'LoginUserTable',
-  data(): {
-    recentLogins: LoginUser[]
-  } {
+  components: {
+    VueLoading,
+  },
+  data(): DataType {
     return {
       recentLogins: [],
+      loading: true,
     }
   },
   created() {
     this.$recaptcha.execute('login').then((token: string) => {
       axios
-        .get('https://api.jaoafa.com/v2/server/recentLogin', {
+        .get('https://api.jaoafa.com/v2/users/recentLogin', {
           params: {
             recaptcha: token,
           },
@@ -64,6 +84,7 @@ export default Vue.extend({
             return
           }
           this.recentLogins = response.data
+          this.loading = false
         })
         .catch((error) => {
           DataStore.showModal({
@@ -84,11 +105,17 @@ export default Vue.extend({
   }
 }
 
+.table {
+  display: block;
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   min-width: 100%;
-  overflow-x: auto;
   white-space: nowrap;
+  border-collapse: collapse;
+  text-align: center;
 
   @include smartphone {
     display: block;
@@ -100,7 +127,7 @@ table {
   }
 
   tbody tr {
-    border-bottom: solid 1px #eee;
+    border-top: solid 1px #eee;
   }
 
   tbody tr:hover {
@@ -131,12 +158,17 @@ table {
   line-height: 2.5em;
   width: 100px;
   cursor: pointer;
-}
 
-.user-btn::before {
-  font-family: 'Material Design Icons';
-  content: '\f0004';
-  color: #fff;
-  font-size: 1.5em;
+  &:hover {
+    transition: 0.5s;
+    opacity: 0.5;
+  }
+
+  &::before {
+    font-family: 'Material Design Icons';
+    content: '\f0004';
+    color: #fff;
+    font-size: 1.5em;
+  }
 }
 </style>

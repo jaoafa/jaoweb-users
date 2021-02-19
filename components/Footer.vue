@@ -21,10 +21,6 @@
   </footer>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style lang="scss" scoped>
 footer {
   background: #222831;
@@ -63,7 +59,6 @@ footer {
     }
 
     .mdi {
-      text-decoration: none;
       color: #fff;
     }
   }

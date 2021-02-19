@@ -2,27 +2,47 @@
   <div class="user-info-container">
     <h2>ユーザー情報</h2>
     <p>このユーザーの情報は以下の通りです。</p>
-    <table class="info-table">
-      <tr>
-        <th>権限グループ</th>
-        <td>{{ data.group }} ({{ data.groupWhen }}現在)</td>
-      </tr>
-      <tr>
-        <th>累計ログイン時間</th>
-        <td>
-          {{ data.totalTime.jaototal }}
-          <button @click="openOnlineTimeModal">詳細を開く</button>
-        </td>
-      </tr>
-      <tr>
-        <th>minecraft.jp 投票回数</th>
-        <td>{{ data.mcjpVoteCount }}回 ({{ data.mcjpVoteRank }}位)</td>
-      </tr>
-      <tr>
-        <th>monocraft.net 投票回数</th>
-        <td>{{ data.monoVoteCount }}回 ({{ data.monoVoteRank }}位)</td>
-      </tr>
-    </table>
+    <div class="table">
+      <table class="info-table">
+        <tr>
+          <th>権限グループ</th>
+          <td v-if="data.group == null">
+            <vue-loading type="spiningDubbles" color="#000" />
+          </td>
+          <td v-if="data.group != null">
+            {{ data.group }} ({{ data.groupWhen }}現在)
+          </td>
+        </tr>
+        <tr>
+          <th>累計ログイン時間</th>
+          <td v-if="data.totalTime.jaototal == null">
+            <vue-loading type="spiningDubbles" color="#000" />
+          </td>
+          <td v-if="data.totalTime.jaototal != null">
+            {{ data.totalTime.jaototal }}
+            <button @click="openOnlineTimeModal">詳細を開く</button>
+          </td>
+        </tr>
+        <tr>
+          <th>minecraft.jp 投票回数</th>
+          <td v-if="data.mcjpVoteCount == -1">
+            <vue-loading type="spiningDubbles" color="#000" />
+          </td>
+          <td v-if="data.mcjpVoteCount != -1">
+            {{ data.mcjpVoteCount }}回 ({{ data.mcjpVoteRank }}位)
+          </td>
+        </tr>
+        <tr>
+          <th>monocraft.net 投票回数</th>
+          <td v-if="data.monoVoteCount == -1">
+            <vue-loading type="spiningDubbles" color="#000" />
+          </td>
+          <td v-if="data.monoVoteCount != -1">
+            {{ data.monoVoteCount }}回 ({{ data.monoVoteRank }}位)
+          </td>
+        </tr>
+      </table>
+    </div>
 
     <ModalWindow
       v-if="onlineTimeModel"
@@ -55,19 +75,20 @@
 import axios from 'axios'
 import Vue from 'vue'
 import ModalWindow from '@/components/ModalWindow.vue'
+import { VueLoading } from 'vue-loading-template'
 import { DataStore } from '~/store'
 
 interface TotalLoginTimeModel {
-  kassi: string
-  jaototal: string
-  jao1: string
-  jao2: string
-  jao3: string
+  kassi: string | null
+  jaototal: string | null
+  jao1: string | null
+  jao2: string | null
+  jao3: string | null
 }
 
 interface UserInfoModel {
-  group: string
-  groupWhen: string
+  group: string | null
+  groupWhen: string | null
   totalTime: TotalLoginTimeModel
   mcjpVoteCount: number
   mcjpVoteRank: number
@@ -84,19 +105,20 @@ export default Vue.extend({
   name: 'UserInfomation',
   components: {
     ModalWindow,
+    VueLoading,
   },
   data(): DataType {
     return {
       onlineTimeModel: false,
       data: {
-        group: '',
-        groupWhen: '',
+        group: null,
+        groupWhen: null,
         totalTime: {
-          kassi: '',
-          jaototal: '',
-          jao1: '',
-          jao2: '',
-          jao3: '',
+          kassi: null,
+          jaototal: null,
+          jao1: null,
+          jao2: null,
+          jao3: null,
         },
         mcjpVoteCount: -1,
         mcjpVoteRank: -1,

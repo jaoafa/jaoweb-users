@@ -11,9 +11,18 @@ interface showModalModel {
   namespaced: true,
 })
 export default class Datas extends VuexModule {
+  private mcid: String | null = null
   private uuid: String | null = null
   private modalTitle: String | null = null
   private modalMessage: String | null = null
+
+  /**
+   * Gets the Minecraft ID of the user page you are currently browsing.
+   * Note: Null is always returned on the top page. Please do not get.
+   */
+  public get getMinecraftID() {
+    return this.mcid
+  }
 
   /**
    * Gets the UUID of the user page you are currently browsing.
@@ -38,11 +47,20 @@ export default class Datas extends VuexModule {
   }
 
   /**
+   * Set the Minecraft ID.
+   * @param mcid Minecraft ID
+   */
+  @Mutation
+  public setMinecraftID(mcid: String | null) {
+    this.mcid = mcid
+  }
+
+  /**
    * Set the UUID.
    * @param uuid UUID
    */
   @Mutation
-  public setUUID(uuid: String) {
+  public setUUID(uuid: String | null) {
     this.uuid = uuid
   }
 

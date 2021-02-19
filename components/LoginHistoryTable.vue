@@ -1,26 +1,37 @@
 <template>
   <div class="user-login-container">
     <h2>ログイン履歴</h2>
-    <table class="user-login-table">
-      <thead>
-        <tr>
-          <th>Minecraft ID</th>
-          <th>日時</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in items" :key="item.id">
-          <td>{{ item.mcid }}</td>
-          <td>{{ item.date }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table">
+      <table class="user-login-table">
+        <thead>
+          <tr>
+            <th>日時</th>
+            <th>Minecraft ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in items" :key="item.id">
+            <td>{{ item.date }}</td>
+            <td>{{ item.mcid }}</td>
+          </tr>
+          <tr v-if="!loading && items.length === 0" class="not-exist">
+            <td colspan="2">Data does not exist.</td>
+          </tr>
+          <tr v-if="loading">
+            <td colspan="2">
+              <vue-loading type="spiningDubbles" color="#000" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
+import { VueLoading } from 'vue-loading-template'
 import { DataStore } from '~/store'
 
 interface Login {
@@ -31,13 +42,18 @@ interface Login {
 
 interface DataType {
   items: Login[]
+  loading: boolean
 }
 
 export default Vue.extend({
   name: 'LoginHistoryTable',
+  components: {
+    VueLoading,
+  },
   data(): DataType {
     return {
       items: [],
+      loading: true,
     }
   },
   computed: {
@@ -69,7 +85,7 @@ export default Vue.extend({
       }
       this.$recaptcha.execute('login').then((token: string) => {
         axios
-          .get(`https://api.jaoafa.com/v2/server/recentLogin`, {
+          .get(`https://api.jaoafa.com/v2/users/recentLogin`, {
             params: {
               uuid: DataStore.getUUID,
               recaptcha: token,
@@ -84,10 +100,11 @@ export default Vue.extend({
               return
             }
             this.items = response.data
+            this.loading = false
           })
           .catch((error) => {
             DataStore.showModal({
-              title: '[Error | UserData]',
+              title: `[Error | ${this.$options.name}]`,
               message: `エラーが発生しました。数分後にもう一度お試しいただき、解決しなければ運営にご連絡ください。<br>${error}`,
             })
           })
