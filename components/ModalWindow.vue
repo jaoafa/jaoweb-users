@@ -20,8 +20,9 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import { DataStore } from '~/store'
-export default {
+export default Vue.extend({
   name: 'ModalWindow',
   computed: {
     getTitle() {
@@ -37,7 +38,7 @@ export default {
       this.$emit('close')
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

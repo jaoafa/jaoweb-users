@@ -17,6 +17,7 @@
   </div>
 </template>
 <script lang="ts">
+import Vue from 'vue'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { DataStore } from '~/store'
@@ -25,7 +26,7 @@ interface DataType {
   isOpen: boolean
 }
 
-export default {
+export default Vue.extend({
   components: {
     Header,
     Footer,
@@ -52,7 +53,7 @@ export default {
       this.isOpen = DataStore.getModalMessage != null
     })
   },
-}
+})
 </script>
 
 <style lang="scss">
