@@ -7,6 +7,10 @@
         :type="'warn'"
       />
       <VAlert
+        :text="'現在、各ユーザーのユーザーページにアクセスするとブラウザがフリーズ・クラッシュする問題があります。Issue: <a href=\'https://github.com/jaoafa/jaoweb-users/issues/6\'>#6</a>'"
+        :type="'error'"
+      />
+      <VAlert
         :text="'このサイトではサーババージョン 1.8.8 以前にログインしたユーザーの情報は閲覧できません。'"
         :type="'info'"
       />

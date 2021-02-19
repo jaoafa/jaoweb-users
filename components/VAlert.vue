@@ -1,7 +1,5 @@
 <template>
-  <div class="alert" :class="type">
-    {{ text }}
-  </div>
+  <div class="alert" :class="type" v-html="text"></div>
 </template>
 
 <script lang="ts">
