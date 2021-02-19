@@ -6,6 +6,10 @@
         :text="'本ユーザーページはベータ版です。不具合等が見つかりましたら tomachi#0310 までご連絡頂くか、GitHubでIssueを立ててください。'"
         :type="'warn'"
       />
+      <VAlert
+        :text="'このサイトではサーババージョン 1.8.8 以前にログインしたユーザーの情報は閲覧できません。'"
+        :type="'info'"
+      />
       <Nuxt />
       <ModalWindow v-if="isOpen" />
     </main>
