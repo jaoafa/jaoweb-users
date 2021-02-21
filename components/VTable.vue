@@ -103,7 +103,7 @@ export default Vue.extend({
     getItems() {
       if (this.sortKey !== '') {
         const set = this.sortAsc ? 1 : -1
-        const items = this.items
+        const items = this.items.concat()
         items.sort((a, b) => {
           if ((a as any)[this.sortKey] < (b as any)[this.sortKey])
             return -1 * set
