@@ -20,6 +20,19 @@ import { DataStore } from '~/store'
 export default Vue.extend({
   name: 'User',
   components: {},
+  data(): {
+    mcid: string
+  } {
+    return {
+      mcid: '',
+    }
+  },
+  head() {
+    return {
+      // @ts-ignore
+      title: this.mcid + ' | jMS Users',
+    }
+  },
   created() {
     DataStore.setMinecraftID(null)
     DataStore.setUUID(null)
@@ -51,6 +64,7 @@ export default Vue.extend({
             return
           }
           DataStore.setMinecraftID(response.data.mcid)
+          this.mcid = response.data.mcid
           DataStore.setUUID(response.data.uuid)
         })
         .catch((error) => {
