@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'jaoweb-users',
+    title: 'jMS Users',
     meta: [
       {
         charset: 'utf-8',
@@ -11,16 +11,91 @@ export default {
         content: 'width=device-width, initial-scale=1',
       },
       {
+        name: 'msapplication-TileColor',
+        content: '#ffb41d',
+      },
+      {
+        name: 'msapplication-config',
+        content: '/favicons/browserconfig.xml',
+      },
+      {
+        name: 'theme-color',
+        content: '#ffb41d',
+      },
+      {
         hid: 'description',
         name: 'description',
-        content: '',
+        content: 'jao Minecraft Server Users Site',
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'jMS Users',
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'article',
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://users.jaoafa.com',
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'jMS Users',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'jao Minecraft Server Users Site',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://users.jaoafa.com/icon.png',
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: '@jaoafa',
       },
     ],
     link: [
       {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/favicons/apple-touch-icon.png',
+      },
+      {
         rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicons/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicons/favicon-16x16.png',
+      },
+      { rel: 'manifest', href: '/favicons/site.webmanifest' },
+      {
+        rel: 'mask-icon',
+        href: '/favicons/safari-pinned-tab.svg',
+        color: '#ffb41d',
+      },
+      {
+        rel: 'shortcut icon',
         type: 'image/x-icon',
-        href: '/img/favicon.ico',
+        href: '/favicons/favicon.ico',
       },
     ],
   },
