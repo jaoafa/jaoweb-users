@@ -1,7 +1,7 @@
 <template>
   <div class="jsa-container">
     <h2>jao Super Achievement2 (独自実績)</h2>
-    <p>実績解除数: {{ items.length }} / 100</p>
+    <p>実績解除数: {{ gotCount }} / {{ allCount }}</p>
     <vue-loading v-if="loading" type="spiningDubbles" color="#000" />
     <div v-if="!loading" class="jsa-items">
       <div v-for="item in items" :key="item.id" class="jsa-item">
@@ -30,6 +30,8 @@ interface Achievement {
 }
 
 interface DataType {
+  gotCount: number
+  allCount: number
   items: Achievement[]
   loading: boolean
 }
@@ -41,6 +43,8 @@ export default Vue.extend({
   },
   data(): DataType {
     return {
+      gotCount: 0,
+      allCount: 0,
       items: [],
       loading: true,
     }
@@ -88,6 +92,8 @@ export default Vue.extend({
               })
               return
             }
+            this.gotCount = response.data.getted
+            this.allCount = response.data.all
             this.items = response.data.data
             this.loading = false
           })
