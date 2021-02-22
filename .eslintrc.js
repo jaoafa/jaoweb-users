@@ -12,5 +12,16 @@ module.exports = {
   ],
   plugins: ['prettier'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+        },
+      },
+    ],
+  },
 }
