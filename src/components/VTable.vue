@@ -1,5 +1,5 @@
 <template>
-  <div class="table">
+  <div class="vtable">
     <table>
       <thead>
         <tr>
@@ -133,81 +133,81 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
-.table,
-.pagination-wrapper {
+<style lang="scss">
+.vtable {
   display: block;
   overflow-x: auto;
   overflow-y: hidden;
-}
 
-.pagination {
-  width: 100%;
-  margin: 10px auto 0;
-  text-align: center;
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  box-sizing: border-box;
-  align-items: baseline;
-
-  li a {
-    padding: 0.5em;
-  }
-  .page-item {
-    font-size: 1.5em;
-    line-height: 1.5em;
-
-    &.active {
-      font-weight: bold;
-      font-size: 1.7em;
-    }
-
-    &:hover {
-      border: 1px solid #eee;
-    }
-
-    &.disabled a {
-      font-size: 1em;
-      cursor: default;
-    }
-  }
-}
-
-table {
-  width: 100%;
-  min-width: 100%;
-  white-space: nowrap;
-  border-collapse: collapse;
-  text-align: center;
-
-  tbody tr {
-    border-top: solid 1px #eee;
-  }
-
-  tbody tr:hover {
-    background-color: #ffeecb;
-  }
-
-  th {
-    background: #eee;
-
-    &.asc::after {
-      content: '▼';
-    }
-    &.desc::after {
-      content: '▲';
-    }
-  }
-
-  th,
-  td {
-    padding: 4px 16px;
-    border: solid 1px #ddd;
-  }
-
-  td:last-child {
+  .pagination {
+    width: 100%;
+    margin: 10px auto 0;
     text-align: center;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: baseline;
+
+    li a {
+      padding: 0.5em;
+    }
+
+    .page-item {
+      font-size: 1.5em;
+      line-height: 1.5em;
+
+      &.active {
+        font-weight: bold;
+        font-size: 1.7em;
+      }
+
+      &:hover {
+        border: 1px solid #eee;
+      }
+
+      &.disabled a {
+        font-size: 1em;
+        cursor: default;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    min-width: 100%;
+    white-space: nowrap;
+    border-collapse: collapse;
+    text-align: center;
+
+    tbody tr {
+      border-top: solid 1px #eee;
+    }
+
+    tbody tr:hover {
+      background-color: #ffeecb;
+    }
+
+    th {
+      background: #eee;
+
+      &.asc::after {
+        content: '▼';
+      }
+      &.desc::after {
+        content: '▲';
+      }
+    }
+
+    th,
+    td {
+      padding: 4px 16px;
+      border: solid 1px #ddd;
+    }
+
+    td:last-child {
+      text-align: center;
+    }
   }
 }
 </style>

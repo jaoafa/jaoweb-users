@@ -1,0 +1,11 @@
+{
+	"recommendations": [
+		"joshbolduc.commitlint",
+		"dbaeumer.vscode-eslint",
+		"octref.vetur",
+		"streetsidesoftware.code-spell-checker"
+	],
+	"unwantedRecommendations": [
+		"hookyqr.beautify"
+	]
+}
