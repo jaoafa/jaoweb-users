@@ -1,20 +1,8 @@
 # jaoweb-users
 
-`users.jaoafa.com`でホストするユーザページプロジェクト
-
-## Overview
+jao Minecraft Server Users
 
 jao Minecraft Serverに一度でも参加したことのある利用者の情報を表示するサイトです。
-
-現行の[`jaoafa.com/user`](https://jaoafa.com/user/)とは以下のように異なる予定です。
-
-- ユーザのデータをクライアントサイド・API経由で取得することにより、レスポンスタイムが改善される
-- Vue.js利用によって静的ファイルで運用できる
-- 情報量が増える
-- フロントエンドのソースコード等を公開可能になる
-- 他者からのIssueやプルリクエストを受けられやすくなる
-
-ヒラタケによるWebサイト再制作を待たずに独立して運用するため、デザインがメインWebサイトと異なり、質の低いものとなると思われます。ヒラタケの多忙が改善して時間が取れればCSSを書いてもらうことをお願いするかもしれません。
 
 ## Development
 
@@ -22,8 +10,8 @@ jao Minecraft Serverに一度でも参加したことのある利用者の情報
 
 - NodeJS (Tested with v15.4.0)
 - Yarn (Tested with v1.22.5)
-- Framework: Nuxt.js
-- Language: Vue 2, TypeScript
+- Framework: Vue 2, Nuxt.js
+- Language: TypeScript
 - Code Formatter/Lint: ESLint + Prettier
 
 ### Linter
@@ -34,40 +22,40 @@ jao Minecraft Serverに一度でも参加したことのある利用者の情報
 
 ### Other
 
-CommitLintによってコミットメッセージに対してのルールが設定されています。このルールに合致しない場合コミットが通りません。[ルール](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#rules)
+CommitLintによってコミットメッセージに対してのルールが設定されています。このルールに合致しない場合コミットが通りません。
 
-[Vue.jsのスタイルガイド](https://jp.vuejs.org/v2/style-guide/index.html) を参考にしてください。  
-必ずこれに沿うというわけではありませんが、大筋はこれを用います。もし現行のコードでこれから外れているものがある場合は今後スタイルガイドへ合わせます。
+- 原則的に、次の形式でコミットメッセージを指定してください: `type(scope): subject` (e.g. `fix(home): message`)
+  - `type`, `subject` は必須、 `scope` は必須ではありません
+- `type-enum`: `type` は必ず次のいずれかにしなければなりません
+  - `build`: ビルド関連
+  - `ci`: CI関連
+  - `chore`: いろいろ
+  - `docs`: ドキュメント関連
+  - `feat`: 新機能
+  - `fix`: 修正
+  - `perf`: パフォーマンス改善
+  - `refactor`: リファクタリング
+  - `revert`: コミットの取り消し
+  - `style`: コードスタイルの修正
+  - `test`: テストコミット
+- `type-case`: `type` は必ず小文字でなければなりません (NG: `FIX` / OK: `fix`)
+- `type-empty`: `type` は必ず含めなければなりません (NG: `test message` / OK: `test: message`)
+- `scope-case`: `scope` は必ず小文字でなければなりません (NG: `fix(HOME): message` / OK: `fix:(home): message`)
+- `subject-case`: `subject` は必ず次のいずれかの書式でなければなりません `sentence-case`, `start-case`, `pascal-case`, `upper-case`
+- `subject-empty`: `subject` は必ず含めなければなりません (NG: `fix:` / OK: `fix: message`)
+- `subject-full-stop`: `subject` は `.` 以外で終えてください (NG: `fix: message.` / OK: `fix: message`)
 
-## 表示予定項目
+など 詳しくは: [ルール](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#rules)
 
-以下の項目を表示予定です。一部の情報はユーザのアクションによって表示させます。
+[Vue.jsのスタイルガイド](https://jp.vuejs.org/v2/style-guide/index.html) を参考にしてください。必ずこれに沿うというわけではありませんが、大筋はこれを用います。
 
-- スタッフの場合Verifiedマーク（Twitter的な）
-- MinecraftID
-- MinecraftUUID
-- 初ログイン日時（〜ヶ月前とかの表記）
-- 最終ログイン日時（〜ヶ月前とかの表記）
-- 累計ログイン時間
-- 権限
-- 投票回数
-- MCBans評価値
-- MCBans Ban履歴（〜ヶ月前とかの表記）
-- Discord連携情報・サブアカウント情報
-- 取得jSA実績一覧
-- ログイン履歴直近10件
-- PeriodMatch2直近10件
-- 処罰数カウンタ
-- 各種処罰直近10件（GBan・LBan・VBan等は別） 
+## Backend System
 
-その他、ほしい情報があればご連絡ください。
+基本的に `api.jaoafa.com` のVersion2 APIを使用してクライアントサイドからデータの取得を行います（一部v1のAPIを使っています）。reCAPTCHAv3による認証を必要とさせます。サーバサイドプログラムは一般公開されていません。
 
-## システム・その他
+## Issue, Pull Requests
 
-`api.jaoafa.com`のVersion2 APIを使用してクライアントサイドからデータの取得を行います。reCAPTCHAv3による認証を必要とさせます。サーバサイドプログラムは一般公開されていません。
-
-Vue.js等の技術勉強と並行して制作します。完成日はかなり先になります。  
-jao Minecraft Serverで活動しているユーザに限りますが、もし何かしら協力してくれる方がいれば言ってください。アイデア提供やプロジェクトへの参加をしてもらうかもしれません。
+このプロジェクトにおいては Issue や Pull Requests などを受け付けています。
 
 ## Build Setup
 
@@ -90,4 +78,4 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## ライセンス
 
-jaoLicenseかMIT Licenseで運用します。アイデア転用を防ぐためにjaoLicenseを適用するかもしれません。
+ライセンスは**独自のライセンスである[jaoLicense](https://github.com/jaoafa/jao-Minecraft-Server/blob/master/jaoLICENSE.md)を適用**します。
