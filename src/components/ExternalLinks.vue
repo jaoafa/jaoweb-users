@@ -5,7 +5,14 @@
     <ul>
       <li v-for="item in items" :key="item.text">
         {{ item.text }}:
-        <a :href="item.url">{{ getMinecraftID }}</a>
+        <a
+          :href="
+            item.url
+              .replace('{UUID}', getUUID)
+              .replace('{NoHyphenUUID}', getUUID.replace(/-/g, ''))
+          "
+          >{{ getMinecraftID }}</a
+        >
       </li>
     </ul>
   </div>
@@ -31,22 +38,27 @@ export default Vue.extend({
       items: [
         {
           text: 'MCBans',
-          url: `http://mcbans.com/player/${DataStore.getUUID}/`,
+          url: `http://mcbans.com/player/{NoHyphenUUID}/`,
         },
         {
           text: 'Japan Minecraft Servers',
-          url: `https://minecraft.jp/${DataStore.getUUID}`,
+          url: `https://minecraft.jp/players/{NoHyphenUUID}`,
         },
         {
           text: 'NameMC',
-          url: `https://ja.namemc.com/profile/${DataStore.getUUID}`,
+          url: `https://ja.namemc.com/profile/{UUID}`,
         },
       ],
     }
   },
   computed: {
     getMinecraftID() {
+      if (DataStore.getMinecraftID == null) return ''
       return DataStore.getMinecraftID
+    },
+    getUUID() {
+      if (DataStore.getUUID == null) return ''
+      return DataStore.getUUID
     },
   },
 })
