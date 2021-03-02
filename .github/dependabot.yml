@@ -4,8 +4,9 @@ updates:
 - package-ecosystem: npm
   directory: '/'
   schedule:
-    interval: daily
+    interval: weekly
     time: '00:00'
+    day: friday
   open-pull-requests-limit: 10
   reviewers:
     - book000
@@ -19,8 +20,9 @@ updates:
 - package-ecosystem: github-actions
   directory: '/'
   schedule:
-    interval: daily
+    interval: weekly
     time: '00:00'
+    day: friday
   open-pull-requests-limit: 10
   reviewers:
     - book000
