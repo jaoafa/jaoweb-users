@@ -14,9 +14,35 @@
         />
       </div>
     </div>
-    <div class="copyright">&copy; 2016-2021 jao Minecraft Server.</div>
+    <div class="copyright-version">
+      <div class="copyright">
+        &copy; 2016-{{ new Date().getFullYear() }} jao Minecraft Server.
+      </div>
+      <div class="version">
+        Version:
+        <a
+          :href="
+            'https://github.com/jaoafa/jaoweb-users/commit/' + getVersion()
+          "
+        >
+          {{ getVersion() }}
+        </a>
+      </div>
+    </div>
   </footer>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  methods: {
+    getVersion() {
+      return process.env.ShortHash
+    },
+  },
+})
+</script>
 
 <style lang="scss" scoped>
 footer {
@@ -60,9 +86,24 @@ footer {
     }
   }
 
-  .copyright {
-    color: #fff;
-    margin: 10px 0;
+  .copyright-version {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .copyright {
+      color: #fff;
+      margin: 10px 0;
+    }
+
+    .version {
+      color: #fff;
+      margin: 10px 0;
+
+      a {
+        color: #fff;
+      }
+    }
   }
 }
 </style>

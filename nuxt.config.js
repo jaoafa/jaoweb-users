@@ -1,3 +1,7 @@
+import { execSync } from 'child_process'
+
+const shortHash = execSync('git rev-parse --short HEAD').toString()
+
 export default {
   telemetry: false,
   srcDir: 'src/',
@@ -138,6 +142,11 @@ export default {
     manifest: {
       lang: 'ja',
     },
+    workbox: {
+      cacheNames: {
+        suffix: shortHash,
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -150,5 +159,9 @@ export default {
     siteKey: '6Lfx01oaAAAAAEpbNZxACNq6O1S722415hpcDDF8',
     version: 3,
     hideBadge: true,
+  },
+
+  env: {
+    ShortHash: shortHash,
   },
 }
