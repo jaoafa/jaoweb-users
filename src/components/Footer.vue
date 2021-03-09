@@ -22,11 +22,17 @@
         Version:
         <a
           :href="
-            'https://github.com/jaoafa/jaoweb-users/commit/' + getVersion()
+            'https://github.com/jaoafa/jaoweb-users/releases/tag/' + getTag()
           "
-        >
-          {{ getVersion() }}
-        </a>
+          v-text="getTag()"
+        />
+        -
+        <a
+          :href="
+            'https://github.com/jaoafa/jaoweb-users/commit/' + getShortHash()
+          "
+          v-text="getShortHash()"
+        />
       </div>
     </div>
   </footer>
@@ -37,7 +43,10 @@ import Vue from 'vue'
 
 export default Vue.extend({
   methods: {
-    getVersion() {
+    getTag() {
+      return process.env.Tag
+    },
+    getShortHash() {
       return process.env.ShortHash
     },
   },

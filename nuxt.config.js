@@ -1,6 +1,7 @@
 import { execSync } from 'child_process'
 
 const shortHash = execSync('git rev-parse --short HEAD').toString()
+const tag = execSync('git describe --tags --abbrev=0').toString().trim()
 
 export default {
   telemetry: false,
@@ -163,5 +164,6 @@ export default {
 
   env: {
     ShortHash: shortHash,
+    Tag: tag,
   },
 }
