@@ -3985,14 +3985,14 @@ eslint-plugin-unicorn@^23.0.0:
     safe-regex "^2.1.1"
     semver "^7.3.2"
 
-eslint-plugin-vue@^7.1.0, eslint-plugin-vue@^7.5.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-7.6.0.tgz"
+eslint-plugin-vue@^7.1.0, eslint-plugin-vue@^7.7.0:
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-7.7.0.tgz#a90df4595e670821bf243bd2750ededdb74948b8"
   dependencies:
     eslint-utils "^2.1.0"
     natural-compare "^1.4.0"
     semver "^7.3.2"
-    vue-eslint-parser "^7.5.0"
+    vue-eslint-parser "^7.6.0"
 
 eslint-scope@5.1.0:
   version "5.1.0"
@@ -8067,14 +8067,7 @@ sass-graph@2.2.5:
     scss-tokenizer "^0.2.3"
     yargs "^13.3.2"
 
-sass-loader@11.0.1:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-11.0.1.tgz#8672f896593466573b904f47693e0695368e38c9"
-  dependencies:
-    klona "^2.0.4"
-    neo-async "^2.6.2"
-
-sass-loader@^10.1.1:
+sass-loader@10.1.1, sass-loader@^10.1.1:
   version "10.1.1"
   resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.1.1.tgz"
   dependencies:
@@ -9366,9 +9359,9 @@ vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz"
 
-vue-eslint-parser@^7.1.1, vue-eslint-parser@^7.5.0:
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.5.0.tgz"
+vue-eslint-parser@^7.1.1, vue-eslint-parser@^7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.6.0.tgz#01ea1a2932f581ff244336565d712801f8f72561"
   dependencies:
     debug "^4.1.1"
     eslint-scope "^5.0.0"
