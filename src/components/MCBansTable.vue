@@ -95,6 +95,7 @@ interface DataType {
   updateAt: string
   global: Ban[]
   local: Ban[]
+  notFound: boolean
   loading: boolean
 }
 
@@ -111,6 +112,7 @@ export default Vue.extend({
       updateAt: '',
       global: [],
       local: [],
+      notFound: false,
       loading: true,
     }
   },
@@ -172,6 +174,12 @@ export default Vue.extend({
             this.loading = false
           })
           .catch((error) => {
+            if (error.response.status === 404) {
+              this.gbanCount = 0
+              this.lbanCount = 0
+              this.reputation = 10
+              return
+            }
             DataStore.showModal({
               title: `[Error | ${this.$options.name}]`,
               message: `エラーが発生しました。数分後にもう一度お試しいただき、解決しなければ運営にご連絡ください。<br>${error}`,
