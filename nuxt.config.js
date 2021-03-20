@@ -6,7 +6,7 @@ const tag = execSync('git describe --tags --abbrev=0').toString().trim()
 export default {
   telemetry: false,
   srcDir: 'src/',
-  // Global page headers: https://go.nuxtjs.dev/config-head
+
   head: {
     title: 'jMS Users',
     meta: [
@@ -106,28 +106,16 @@ export default {
     ],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['ress', '@mdi/font/css/materialdesignicons.css'],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/axios-accessor'],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-    // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
-  ],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module'],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/recaptcha',
@@ -135,10 +123,8 @@ export default {
 
   styleResources: {},
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'ja',
@@ -150,10 +136,8 @@ export default {
     },
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
-  // SSR無効
   ssr: false,
 
   recaptcha: {
