@@ -10,7 +10,10 @@
             <vue-loading type="spiningDubbles" color="#000" />
           </td>
           <td v-if="data.group != null">
-            {{ data.group }} ({{ data.groupWhen }}現在)
+            {{ data.group }}
+            <span v-if="data.groupWhen != null">
+              ({{ data.groupWhen }}現在)
+            </span>
           </td>
         </tr>
         <tr>
