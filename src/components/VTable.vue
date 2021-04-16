@@ -64,12 +64,12 @@ export default Vue.extend({
   props: {
     columns: {
       type: Array as PropType<Column[]>,
-      default: [],
+      default: () => [],
       required: true,
     },
     items: {
       type: Array as PropType<any[]>,
-      default: [],
+      default: () => [],
       required: true,
     },
     defaultSortKey: {
