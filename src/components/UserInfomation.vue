@@ -69,6 +69,10 @@
           <dt>jao Minecraft Server 第3世代</dt>
           <dd>{{ data.totalTime.jao3 }}</dd>
         </div>
+        <div>
+          <dt>jao Minecraft Server 第4世代</dt>
+          <dd>{{ data.totalTime.jao4 }}</dd>
+        </div>
       </dl>
     </ModalWindow>
   </div>
@@ -87,6 +91,7 @@ interface TotalLoginTimeModel {
   jao1: string | null
   jao2: string | null
   jao3: string | null
+  jao4: string | null
 }
 
 interface UserInfoModel {
@@ -122,6 +127,7 @@ export default Vue.extend({
           jao1: null,
           jao2: null,
           jao3: null,
+          jao4: null,
         },
         mcjpVoteCount: -1,
         mcjpVoteRank: -1,
