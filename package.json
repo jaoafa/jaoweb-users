@@ -28,7 +28,7 @@
     "@nuxtjs/recaptcha": "^1.0.4",
     "core-js": "^3.10.1",
     "nuxt": "^2.15.4",
-    "ress": "^3.0.0",
+    "ress": "^4.0.0",
     "vue-loading-template": "^1.3.2",
     "vuejs-paginate": "^2.1.0",
     "vuex-module-decorators": "^1.0.1"
