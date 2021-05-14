@@ -8,10 +8,6 @@ updates:
     time: '00:00'
     day: friday
   open-pull-requests-limit: 10
-  reviewers:
-    - book000
-  assignees:
-    - book000
   commit-message:
     prefix: fix
     prefix-development: chore
@@ -24,10 +20,6 @@ updates:
     time: '00:00'
     day: friday
   open-pull-requests-limit: 10
-  reviewers:
-    - book000
-  assignees:
-    - book000
   commit-message:
     prefix: fix
     prefix-development: chore
