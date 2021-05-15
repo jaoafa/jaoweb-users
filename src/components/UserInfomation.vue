@@ -27,6 +27,15 @@
           </td>
         </tr>
         <tr>
+          <th>累計AFK時間</th>
+          <td v-if="data.afkTimeFormatted == null">
+            <vue-loading type="spiningDubbles" color="#000" />
+          </td>
+          <td v-if="data.afkTimeFormatted != null">
+            {{ data.afkTimeFormatted }}
+          </td>
+        </tr>
+        <tr>
           <th>minecraft.jp 投票回数</th>
           <td v-if="data.mcjpVoteCount == -1">
             <vue-loading type="spiningDubbles" color="#000" />
@@ -102,6 +111,8 @@ interface UserInfoModel {
   mcjpVoteRank: number
   monoVoteCount: number
   monoVoteRank: number
+  afkTime: number
+  afkTimeFormatted: string | null
 }
 
 interface DataType {
@@ -133,6 +144,8 @@ export default Vue.extend({
         mcjpVoteRank: -1,
         monoVoteCount: -1,
         monoVoteRank: -1,
+        afkTime: -1,
+        afkTimeFormatted: null,
       },
     }
   },
