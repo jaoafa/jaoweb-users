@@ -16,6 +16,8 @@
 import Vue from 'vue'
 import axios from 'axios'
 import { DataStore } from '@/store'
+import bufferToDataUrl from 'buffer-to-data-url'
+import toIco from 'to-ico'
 
 export default Vue.extend({
   name: 'User',
@@ -33,7 +35,7 @@ export default Vue.extend({
       title: this.mcid + ' | jMS Users',
     }
   },
-  created() {
+  mounted() {
     DataStore.setMinecraftID(null)
     DataStore.setUUID(null)
     this.$recaptcha.execute('login').then((token: string) => {
@@ -66,6 +68,35 @@ export default Vue.extend({
           DataStore.setMinecraftID(response.data.mcid)
           this.mcid = response.data.mcid
           DataStore.setUUID(response.data.uuid)
+
+          axios
+            .get(
+              'https://crafatar.com/avatars/' +
+                response.data.uuid +
+                '?overlay=true&size=16',
+              { responseType: 'arraybuffer' }
+            )
+            .then(async (response) => {
+              const buf = await toIco([Buffer.from(response.data, 'utf-8')], {
+                resize: true,
+                sizes: [16],
+              })
+              console.log(buf)
+              if (
+                document === null ||
+                document!.getElementById('favicon-ico') == null
+              ) {
+                console.log("document!.getElementById('favicon-ico') == null")
+                return
+              }
+              const element: HTMLAnchorElement = <HTMLAnchorElement>(
+                document!.getElementById('favicon-ico')
+              )
+
+              element.href = `data:image/vnd.microsoft.icon;base64,${buf.toString(
+                'base64'
+              )}`
+            })
         })
         .catch((error) => {
           if ('error' in error.response.data) {

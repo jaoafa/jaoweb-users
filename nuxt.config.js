@@ -102,6 +102,7 @@ export default {
         rel: 'shortcut icon',
         type: 'image/x-icon',
         href: '/favicons/favicon.ico',
+        id: 'favicon-ico',
       },
     ],
   },
@@ -136,7 +137,13 @@ export default {
     },
   },
 
-  build: {},
+  build: {
+    extend(config) {
+      config.node = {
+        fs: 'empty',
+      }
+    },
+  },
 
   ssr: false,
 
