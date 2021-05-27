@@ -81,12 +81,10 @@ export default Vue.extend({
                 resize: true,
                 sizes: [16],
               })
-              console.log(buf)
               if (
                 document === null ||
                 document!.getElementById('favicon-ico') == null
               ) {
-                console.log("document!.getElementById('favicon-ico') == null")
                 return
               }
               const element: HTMLAnchorElement = <HTMLAnchorElement>(
