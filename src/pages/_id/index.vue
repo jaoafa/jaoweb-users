@@ -16,7 +16,6 @@
 import Vue from 'vue'
 import axios from 'axios'
 import { DataStore } from '@/store'
-import bufferToDataUrl from 'buffer-to-data-url'
 import toIco from 'to-ico'
 
 export default Vue.extend({

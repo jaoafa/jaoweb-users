@@ -3188,13 +3188,6 @@ buffer-json@^2.0.0:
   resolved "https://registry.yarnpkg.com/buffer-json/-/buffer-json-2.0.0.tgz#f73e13b1e42f196fe2fd67d001c7d7107edd7c23"
   integrity sha512-+jjPFVqyfF1esi9fvfUs3NqM0pH1ziZ36VP4hmA/y/Ssfo/5w5xHKfTw9BwQjoJ1w/oVtpLomqwUHKdefGyuHw==
 
-buffer-to-data-url@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/buffer-to-data-url/-/buffer-to-data-url-1.0.0.tgz#7ac95ac3ded94a62aa00519e2be487db51a07fcf"
-  integrity sha512-LtIlHOSgBKTSuC83syIou7GxbyJXB+kfQiiy+8/G/pcyGMvxUIg22DQRFsQeX5lOO5tMK5ZDuwSVyZ/Gxa1pKg==
-  dependencies:
-    "@babel/runtime" "^7.9.2"
-
 buffer-xor@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
