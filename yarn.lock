@@ -2115,10 +2115,10 @@
     "@types/webpack" "^4"
     terser "^4.6.13"
 
-"@types/to-ico@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/to-ico/-/to-ico-1.1.0.tgz#32c0ac9dc4c2cb39f1fe9cc6daf22b4c22073416"
-  integrity sha512-eQryA6iEkKWYi+1fouSKVn5RyjEw0S9nmw1mdm1osSarV85OEykvxeGgiRSYHvJAgbqtlsIZprbsX19U/ZcUSg==
+"@types/to-ico@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/to-ico/-/to-ico-1.1.1.tgz#486397c906bddd8aee38e43cda1afe5c38cd1c05"
+  integrity sha512-WQbdkUB4RjE2rrM9rNqm5OutcxWWZ3J9olDtYA+zDxiPobD7o/RHC+GlGOM5rL1ASP/AoudkDLKw5DbFV3DO8w==
   dependencies:
     "@types/node" "*"
 
