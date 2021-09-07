@@ -90,8 +90,8 @@
 <script lang="ts">
 import axios from 'axios'
 import Vue from 'vue'
-import ModalWindow from '@/components/ModalWindow.vue'
 import { VueLoading } from 'vue-loading-template'
+import ModalWindow from '@/components/ModalWindow.vue'
 import { DataStore } from '@/store'
 
 interface TotalLoginTimeModel {

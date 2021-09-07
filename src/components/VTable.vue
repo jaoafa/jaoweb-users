@@ -46,6 +46,7 @@
 </template>
 
 <script lang="ts">
+// eslint-disable-next-line import/named
 import Vue, { PropType } from 'vue'
 // @ts-ignore
 import Paginate from 'vuejs-paginate'
