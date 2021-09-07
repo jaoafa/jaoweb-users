@@ -15,8 +15,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
-import { DataStore } from '@/store'
 import toIco from 'to-ico'
+import { DataStore } from '@/store'
 
 export default Vue.extend({
   name: 'User',
@@ -86,9 +86,9 @@ export default Vue.extend({
               ) {
                 return
               }
-              const element: HTMLAnchorElement = <HTMLAnchorElement>(
-                document!.getElementById('favicon-ico')
-              )
+              const element: HTMLAnchorElement = document!.getElementById(
+                'favicon-ico'
+              ) as HTMLAnchorElement
 
               element.href = `data:image/vnd.microsoft.icon;base64,${buf.toString(
                 'base64'
