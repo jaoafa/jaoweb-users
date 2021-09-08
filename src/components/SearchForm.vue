@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 <template>
   <form class="search-form" action="#" @keydown.enter="onSubmit">
     <input
@@ -17,7 +16,7 @@
     <button
       class="search-btn"
       :class="{ disabled: disableSearchBtn }"
-      @click="onSubmit"
+      @click.prevent="onSubmit"
     />
   </form>
 </template>
@@ -77,9 +76,9 @@ export default Vue.extend({
         })
       })
     },
-    onSubmit(event: { keyCode: number }) {
+    async onSubmit(event: { keyCode: number }) {
       if (event.keyCode !== undefined && event.keyCode !== 13) return
-      this.$router.push({ path: `/${this.mcid}` })
+      await this.$router.push({ path: `/${this.mcid}` })
       return false
     },
   },
