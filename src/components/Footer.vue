@@ -7,7 +7,7 @@
       <div class="socials">
         <a class="mdi mdi-twitter" href="https://twitter.com/jaoafa" />
         <a class="mdi mdi-instagram" href="https://instagr.am/jaoafa" />
-        <a class="mdi mdi-discord" href="https://discord.com/invite/YjwYEBk" />
+        <a class="mdi mdi-discord" href="https://discord.gg/6k8FK78zUy" />
         <a
           class="mdi mdi-youtube"
           href="https://www.youtube.com/channel/UC92wyJyhqXEMiEROeFJKNKg"
