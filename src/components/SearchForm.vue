@@ -114,6 +114,7 @@ export default Vue.extend({
     color: #fff;
     font-size: 2em;
   }
+
   &.disabled {
     opacity: 0.5;
     pointer-events: none;

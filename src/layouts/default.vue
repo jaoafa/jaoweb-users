@@ -64,6 +64,7 @@ export default Vue.extend({
     @content;
   }
 }
+
 html,
 body {
   margin: 0;

@@ -180,15 +180,19 @@ export default Vue.extend({
   0% {
     filter: brightness(100%);
   }
+
   30% {
     filter: brightness(120%);
   }
+
   50% {
     filter: brightness(150%);
   }
+
   80% {
     filter: brightness(120%);
   }
+
   100% {
     filter: brightness(100%);
   }
@@ -197,15 +201,19 @@ export default Vue.extend({
   0% {
     filter: brightness(100%);
   }
+
   30% {
     filter: brightness(120%);
   }
+
   50% {
     filter: brightness(150%);
   }
+
   80% {
     filter: brightness(120%);
   }
+
   100% {
     filter: brightness(100%);
   }
@@ -214,15 +222,19 @@ export default Vue.extend({
   0% {
     filter: brightness(100%);
   }
+
   30% {
     filter: brightness(120%);
   }
+
   50% {
     filter: brightness(150%);
   }
+
   80% {
     filter: brightness(120%);
   }
+
   100% {
     filter: brightness(100%);
   }
@@ -231,15 +243,19 @@ export default Vue.extend({
   0% {
     filter: brightness(100%);
   }
+
   30% {
     filter: brightness(120%);
   }
+
   50% {
     filter: brightness(150%);
   }
+
   80% {
     filter: brightness(120%);
   }
+
   100% {
     filter: brightness(100%);
   }
@@ -248,15 +264,19 @@ export default Vue.extend({
   0% {
     filter: brightness(100%);
   }
+
   30% {
     filter: brightness(120%);
   }
+
   50% {
     filter: brightness(150%);
   }
+
   80% {
     filter: brightness(120%);
   }
+
   100% {
     filter: brightness(100%);
   }

@@ -195,6 +195,7 @@ export default Vue.extend({
       &.asc::after {
         content: '▼';
       }
+
       &.desc::after {
         content: '▲';
       }
