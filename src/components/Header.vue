@@ -35,6 +35,7 @@
     @content;
   }
 }
+
 header {
   background-color: #222831;
   height: 72px;
