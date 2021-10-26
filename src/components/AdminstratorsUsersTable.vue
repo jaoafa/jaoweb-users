@@ -91,6 +91,12 @@ export default Vue.extend({
           role: 'モデレータ',
           group: 'Moderator',
         },
+        {
+          id: 'yuuaHP',
+          uuid: '13976d72-1389-4332-818e-9cecad363b12',
+          role: 'モデレータ',
+          group: 'Moderator',
+        },
       ],
     }
   },
