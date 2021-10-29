@@ -19,7 +19,7 @@ import toIco from 'to-ico'
 import { DataStore } from '@/store'
 
 export default Vue.extend({
-  name: 'User',
+  name: 'UserPage',
   components: {},
   data(): {
     mcid: string

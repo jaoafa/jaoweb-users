@@ -1,7 +1,15 @@
 import { execSync } from 'child_process'
 
-const shortHash = execSync('git rev-parse --short HEAD').toString()
-const tag = execSync('git describe --tags --abbrev=0').toString().trim()
+function getCommandResult(command) {
+  try {
+    return execSync(command).toString().trim()
+  } catch (e) {
+    return null
+  }
+}
+
+const shortHash = getCommandResult('git rev-parse --short HEAD')
+const tag = getCommandResult('git describe --tags --abbrev=0')
 
 export default {
   telemetry: false,
