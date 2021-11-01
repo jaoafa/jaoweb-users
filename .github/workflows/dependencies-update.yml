@@ -52,6 +52,10 @@ jobs:
           git status | grep modified
           echo "::set-output name=modified::`echo $?`"
 
+      - run: |
+          echo ${{ steps.is-modified.outputs.modified }}
+          echo ${{ steps.is-modified.outputs.modified == '1' }}
+
       - name: Create pull request
         if: ${{ steps.is-modified.outputs.modified == '1' }}
         run: |
