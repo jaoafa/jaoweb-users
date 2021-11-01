@@ -57,6 +57,7 @@ jobs:
         run: |
           hub add -A
           hub commit -m "chore: Update dependencies packages"
+          hub push
           hub pull-request -b master -m "Update dependencies packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
