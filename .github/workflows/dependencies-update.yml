@@ -3,12 +3,19 @@ name: Update dependencies packages
 on: workflow_dispatch
 
 jobs:
-  ci:
+  update:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Create new branch
+        run: hub checkout -b dependencies-update-${{ steps.date.outputs.date }}
 
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.4.1
@@ -39,7 +46,12 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Is modified
+        id: is-modified
+        run: echo ::set-output name=modified::`git status | grep modified | echo $?`
+
       - name: Create pull request
+        if: ${{ steps.is-modified.outputs.modified == '1' }}
         run: |
           hub add -A
           hub commit -m "chore: Update dependencies packages"
