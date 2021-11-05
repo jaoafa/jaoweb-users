@@ -41,6 +41,14 @@ jobs:
       - name: Update dependencies
         run: yarn upgrade --latest
 
+      - name: Run linter 👀
+        run: yarn lint
+
+      - name: Run build & generate 🏗️
+        run: |
+          yarn build
+          yarn generate
+
       - name: Set git config
         run: |
           git config --global user.name "GitHub Action"
