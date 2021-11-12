@@ -29,6 +29,7 @@ import LoginUserTable from '@/components/LoginUserTable.vue'
 import AdminstratorsUsersTable from '@/components/AdminstratorsUsersTable.vue'
 
 export default Vue.extend({
+  name: 'IndexPage',
   components: {
     SearchForm,
     LoginUserTable,

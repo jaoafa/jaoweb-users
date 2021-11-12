@@ -23,6 +23,7 @@ interface DataType {
 }
 
 export default Vue.extend({
+  name: 'LayoutDefault',
   components: {
     Header,
     Footer,

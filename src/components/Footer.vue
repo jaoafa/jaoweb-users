@@ -42,6 +42,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  name: 'TheFooter',
   methods: {
     getTag() {
       return process.env.Tag

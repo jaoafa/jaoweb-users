@@ -23,6 +23,13 @@
   </header>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  name: 'TheHeader',
+})
+</script>
+
 <style lang="scss" scoped>
 @mixin pc {
   @media (max-width: 1024px) {
