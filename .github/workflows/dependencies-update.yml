@@ -41,7 +41,7 @@ jobs:
       - name: Update dependencies
         run: |
           yarn add --dev yarn-upgrade-all
-          yarn-upgrade-all
+          yarn yarn-upgrade-all
           yarn remove yarn-upgrade-all
 
       - name: Run linter 👀
