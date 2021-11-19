@@ -39,7 +39,10 @@ jobs:
         run: yarn
 
       - name: Update dependencies
-        run: yarn upgrade --latest
+        run: |
+          yarn add --dev yarn-upgrade-all
+          yarn-upgrade-all
+          yarn remove yarn-upgrade-all
 
       - name: Run linter 👀
         run: yarn lint
