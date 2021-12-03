@@ -35,7 +35,7 @@
     "@nuxtjs/style-resources": "^1.2.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/to-ico": "^1.1.1",
-    "core-js": "^3.19.1",
+    "core-js": "^3.19.2",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.0.0",
