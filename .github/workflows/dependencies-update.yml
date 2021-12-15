@@ -77,6 +77,6 @@ jobs:
           hub push --set-upstream origin dependencies-update-${{ steps.date.outputs.date }}
           echo -e "Update dependencies packages\n\n" > description.md
           echo "Executed from ${{ github.event.inputs.exec-from }}" >> description.md
-          hub pull-request -b master -F description.md -r book000
+          hub pull-request -b master -F description.md -r ${{ github.event.sender.login }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
