@@ -80,12 +80,6 @@ export default Vue.extend({
           group: 'Moderator',
         },
         {
-          id: 'Nudonge',
-          uuid: '22b69dc2-a8e7-4ffd-a3d0-54023d687d5f',
-          role: 'モデレータ',
-          group: 'Moderator',
-        },
-        {
           id: 'MinHero_exp',
           uuid: '0ad34a33-3ca4-4c86-84f3-a4591920b06a',
           role: 'モデレータ',
