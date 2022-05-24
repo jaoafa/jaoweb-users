@@ -1595,10 +1595,10 @@
     serve-static "^1.14.1"
     workbox-cdn "^5.1.4"
 
-"@nuxtjs/recaptcha@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/recaptcha/-/recaptcha-1.1.0.tgz#f36d6a30909495caa736c44aa551ba6dd0979a15"
-  integrity sha512-z7a0ad5x3hOEKAwsvrsz3opjldaAuH53dGVwePj/req5nFcj7Oinkrzjruu6esU1P89BN/rZNipmAoue4w2mNw==
+"@nuxtjs/recaptcha@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/recaptcha/-/recaptcha-1.1.1.tgz#21f9dcd53d7b869b570ab4829404df1200ed26de"
+  integrity sha512-maHqf6x6EgfRm7lvjK7nTwle/17cRzMkeFDWPGdcdKjDnAjuli7Mei5qPG0CFZX1zG9ohIEv+0QEs7fgudyLrg==
 
 "@nuxtjs/style-resources@1.2.1":
   version "1.2.1"
