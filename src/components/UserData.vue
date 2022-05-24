@@ -45,7 +45,7 @@
             </dd>
           </div>
           <div>
-            <dt>Least login</dt>
+            <dt>Last login</dt>
             <dd v-if="data.leastLogin == null">
               <vue-loading type="spiningDubbles" color="#000" />
             </dd>
