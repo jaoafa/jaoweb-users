@@ -10,7 +10,10 @@
             <vue-loading type="spiningDubbles" color="#000" />
           </td>
           <td v-if="data.group != null">
-            {{ data.group }}
+            <span v-if="data.groupExpireAt != null">
+              {{ data.groupExpireAt }} まで
+            </span>
+            {{ getFirstCapitalize(data.group) }}
             <span v-if="data.groupWhen != null">
               ({{ data.groupWhen }}現在)
             </span>
@@ -106,6 +109,7 @@ interface TotalLoginTimeModel {
 interface UserInfoModel {
   group: string | null
   groupWhen: string | null
+  groupExpireAt: string | null
   totalTime: TotalLoginTimeModel
   mcjpVoteCount: number
   mcjpVoteRank: number
@@ -132,6 +136,7 @@ export default Vue.extend({
       data: {
         group: null,
         groupWhen: null,
+        groupExpireAt: null,
         totalTime: {
           kassi: null,
           jaototal: null,
@@ -202,6 +207,9 @@ export default Vue.extend({
     openOnlineTimeModal() {
       DataStore.setModalTitle('ログイン時間詳細')
       this.onlineTimeModel = true
+    },
+    getFirstCapitalize(str: string) {
+      return str.charAt(0).toUpperCase() + str.slice(1)
     },
   },
 })
