@@ -29,12 +29,14 @@
             </td>
             <td>
               <nuxt-link
-                v-if="item.bannedBy != 'jaotan'"
+                v-if="!isLinkIgnoreUser(item.bannedBy)"
                 :to="{ path: `/${item.bannedBy}` }"
               >
                 {{ item.bannedBy }}
               </nuxt-link>
-              <span v-if="item.bannedBy == 'jaotan'">{{ item.bannedBy }}</span>
+              <span v-if="isLinkIgnoreUser(item.bannedBy)">{{
+                item.bannedBy
+              }}</span>
             </td>
             <td>{{ item.date }}</td>
           </tr>
@@ -155,6 +157,9 @@ export default Vue.extend({
             })
           })
       })
+    },
+    isLinkIgnoreUser(user: string) {
+      return user === 'jaotan' || user === 'CONSOLE'
     },
   },
 })
