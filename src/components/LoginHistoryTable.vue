@@ -192,7 +192,8 @@ export default Vue.extend({
     }
   }
   .heatmap {
-    margin: 16px;
+    margin: 16px auto;
+    max-width: 1300px;
   }
 }
 </style>
