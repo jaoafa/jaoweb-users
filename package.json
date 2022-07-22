@@ -54,7 +54,7 @@
     "stylelint-config-standard": "26.0.0",
     "stylelint-scss": "4.3.0",
     "to-ico": "1.1.5",
-    "vue-calendar-heatmap": "^0.8.4",
+    "vue-calendar-heatmap": "0.8.4",
     "vue-loading-template": "1.3.2",
     "vuejs-paginate": "2.1.0",
     "vuex-module-decorators": "2.0.0"
