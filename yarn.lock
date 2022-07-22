@@ -10901,7 +10901,7 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-calendar-heatmap@^0.8.4:
+vue-calendar-heatmap@0.8.4:
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/vue-calendar-heatmap/-/vue-calendar-heatmap-0.8.4.tgz#eb450a23870df0ca1ab80d12489125f590d482d2"
   integrity sha512-Hx7OYBY1ghUIxKmFIIzpLT4XlcrwnI3WpadJEj/sKj5quoxwEuSDKmf94v0zWOHeQ/2CrB1G66geaKR/O56+OQ==
