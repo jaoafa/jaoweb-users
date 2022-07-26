@@ -280,7 +280,7 @@ $rank-colors: (
   .user-icon {
     display: block;
     margin-top: 10px;
-    width: 170px;
+    width: 180px;
     height: 170px;
     border-radius: 50%;
     object-fit: cover;
