@@ -62,17 +62,23 @@
           :href="
             'https://twitter.com/intent/user?user_id=' + data.socials.twitterId
           "
-        />
+        >
+          <TwitterIcon size="32" />
+        </a>
         <a
           class="discord"
           :class="{ disabled: data.socials.discordId == null }"
           :href="'https://discord.com/users/' + data.socials.discordId"
-        />
+        >
+          <DiscordIcon size="32" />
+        </a>
         <a
           class="github"
           :class="{ disabled: data.socials.githubId == null }"
           :href="'https://github.com/' + data.socials.githubId"
-        />
+        >
+          <GitHubIcon size="32" />
+        </a>
         <a
           class="home"
           :class="{ disabled: data.socials.homeUrl == null }"
@@ -87,6 +93,11 @@
 import Vue from 'vue'
 import axios from 'axios'
 import { VueLoading } from 'vue-loading-template'
+import {
+  DiscordIcon,
+  GitHubIcon,
+  TwitterIcon,
+} from 'vue-simple-icons/dist/vue-simple-icons.cjs.js'
 import { DataStore } from '@/store'
 
 interface Socials {
@@ -119,6 +130,9 @@ export default Vue.extend({
   name: 'UserData',
   components: {
     VueLoading,
+    TwitterIcon,
+    DiscordIcon,
+    GitHubIcon,
   },
   data(): DataType {
     return {
@@ -355,30 +369,25 @@ $rank-colors: (
       }
 
       a {
-        font-size: 32px;
+        font-size: 42px;
         text-decoration: none;
+        margin-right: 2px;
 
-        &::before {
-          font-family: 'Material Design Icons';
+        &.twitter {
+          fill: #00acee;
+        }
+
+        &.discord {
+          fill: #7289da;
+        }
+
+        &.github {
+          fill: #00acee;
         }
       }
 
-      .twitter::before {
-        content: '\f0544';
-        color: #00acee;
-      }
-
-      .discord::before {
-        content: '\f066f';
-        color: #7289da;
-      }
-
-      .github::before {
-        content: '\f02a4';
-        color: #00acee;
-      }
-
       .home::before {
+        font-family: 'Material Design Icons';
         content: '\f02dc';
         color: #00acee;
       }

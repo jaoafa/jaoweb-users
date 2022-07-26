@@ -5,13 +5,18 @@
         <AppLogo />
       </div>
       <div class="socials">
-        <a class="mdi mdi-twitter" href="https://twitter.com/jaoafa" />
-        <a class="mdi mdi-instagram" href="https://instagr.am/jaoafa" />
-        <a class="mdi mdi-discord" href="https://discord.gg/6k8FK78zUy" />
-        <a
-          class="mdi mdi-youtube"
-          href="https://www.youtube.com/channel/UC92wyJyhqXEMiEROeFJKNKg"
-        />
+        <a href="https://twitter.com/jaoafa">
+          <TwitterIcon />
+        </a>
+        <a href="https://instagr.am/jaoafa">
+          <InstagramIcon />
+        </a>
+        <a href="https://discord.gg/6k8FK78zUy">
+          <DiscordIcon />
+        </a>
+        <a href="https://www.youtube.com/channel/UC92wyJyhqXEMiEROeFJKNKg">
+          <YouTubeIcon />
+        </a>
       </div>
     </div>
     <div class="copyright-version">
@@ -40,9 +45,21 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import {
+  TwitterIcon,
+  InstagramIcon,
+  DiscordIcon,
+  YouTubeIcon,
+} from 'vue-simple-icons/dist/vue-simple-icons.cjs.js'
 
 export default Vue.extend({
   name: 'TheFooter',
+  components: {
+    TwitterIcon,
+    InstagramIcon,
+    DiscordIcon,
+    YouTubeIcon,
+  },
   methods: {
     getTag() {
       return process.env.Tag
@@ -82,7 +99,8 @@ footer {
 
     a {
       text-decoration: none;
-      font-size: 21px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       padding: 10px;
 
@@ -91,8 +109,8 @@ footer {
       }
     }
 
-    .mdi {
-      color: #fff;
+    svg {
+      fill: #fff;
     }
   }
 
