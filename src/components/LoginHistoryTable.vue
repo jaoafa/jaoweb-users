@@ -8,8 +8,8 @@
         v-if="!loadingHeatmap"
         :values="heatmaps"
         :end-date="today"
-        :max="10"
-        :tooltip-unit="'login'"
+        :max="86400"
+        :tooltip-unit="'sec'"
       />
     </div>
 
@@ -139,7 +139,7 @@ export default Vue.extend({
       })
       this.$recaptcha.execute('login').then((token: string) => {
         axios
-          .get(`https://api.jaoafa.com/v2/users/login`, {
+          .get(`https://api.jaoafa.com/v2/users/daily-online`, {
             params: {
               uuid: DataStore.getUUID,
               recaptcha: token,
