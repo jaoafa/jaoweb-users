@@ -19,6 +19,15 @@
       </p>
       <AdminstratorsUsersTable />
     </div>
+    <div>
+      <h2>その他</h2>
+
+      <ul>
+        <li>
+          複数ユーザーのヒートマップ: <nuxt-link to="/heatmaps">見る</nuxt-link>
+        </li>
+      </ul>
+    </div>
   </main>
 </template>
 
