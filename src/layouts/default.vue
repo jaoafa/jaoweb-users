@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <TheHeader />
     <main>
       <VAlert
         :text="'このサイトではサーババージョン 1.8.8 以前にログインしたユーザーの情報は閲覧できません。'"
@@ -9,13 +9,13 @@
       <Nuxt />
       <ModalWindow v-if="isOpen" />
     </main>
-    <Footer />
+    <TheFooter />
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import TheHeader from '~/components/TheHeader.vue'
+import TheFooter from '~/components/TheFooter.vue'
 import { DataStore } from '@/store'
 
 interface DataType {
@@ -25,8 +25,8 @@ interface DataType {
 export default Vue.extend({
   name: 'LayoutDefault',
   components: {
-    Header,
-    Footer,
+    TheHeader,
+    TheFooter,
   },
   data(): DataType {
     return {
