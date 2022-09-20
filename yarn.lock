@@ -2274,7 +2274,7 @@
     "@vue/reactivity" "3.2.39"
     "@vue/shared" "3.2.39"
 
-"@vue/runtime-dom@^3.2.39":
+"@vue/runtime-dom@3.2.39":
   version "3.2.39"
   resolved "https://registry.yarnpkg.com/@vue/runtime-dom/-/runtime-dom-3.2.39.tgz#4a8cb132bcef316e8151c5ed07fc7272eb064614"
   integrity sha512-4G9AEJP+sLhsqf5wXcyKVWQKUhI+iWfy0hWQgea+CpaTD7BR0KdQzvoQdZhwCY6B3oleSyNLkLAQwm0ya/wNoA==
@@ -3298,12 +3298,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001286:
-  version "1.0.30001407"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001407.tgz"
-  integrity sha512-4ydV+t4P7X3zH83fQWNDX/mQEzYomossfpViCOx9zHBSMV+rIe3LFqglHHtVyvNl1FhTNxPxs3jei82iqOW04w==
-
-caniuse-lite@^1.0.30001274:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001274, caniuse-lite@^1.0.30001286:
   version "1.0.30001407"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001407.tgz"
   integrity sha512-4ydV+t4P7X3zH83fQWNDX/mQEzYomossfpViCOx9zHBSMV+rIe3LFqglHHtVyvNl1FhTNxPxs3jei82iqOW04w==
