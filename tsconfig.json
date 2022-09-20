@@ -21,7 +21,15 @@
       "@types/node",
       "@nuxtjs/recaptcha/types"
     ],
-    "typeRoots": ["src/types"]
+    "typeRoots": ["src/types"],
+    "jsx": "preserve"
+  },
+  "vueCompilerOptions": {
+    "__comment": "See: https://github.com/johnsoncodehk/volar/issues/732",
+    "experimentalCompatMode": 2,
+    "experimentalTemplateCompilerOptions": {
+      "compatConfig": { "MODE": 2 }
+    }
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }

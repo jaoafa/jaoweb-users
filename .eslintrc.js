@@ -23,5 +23,6 @@ module.exports = {
         },
       },
     ],
+    'vue/no-v-html': 'off',
   },
 }
