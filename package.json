@@ -35,7 +35,7 @@
     "@nuxtjs/style-resources": "1.2.1",
     "@nuxtjs/stylelint-module": "4.1.0",
     "@types/to-ico": "1.1.1",
-    "@vue/runtime-dom": "3.2.41",
+    "@vue/runtime-dom": "3.2.42",
     "core-js": "3.26.0",
     "eslint": "8.27.0",
     "eslint-config-prettier": "8.5.0",
