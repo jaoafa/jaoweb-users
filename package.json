@@ -22,8 +22,8 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "17.4.1",
-    "@commitlint/config-conventional": "17.4.0",
+    "@commitlint/cli": "17.4.2",
+    "@commitlint/config-conventional": "17.4.2",
     "@mdi/font": "7.1.96",
     "@nuxt/types": "2.15.8",
     "@nuxt/typescript-build": "2.1.0",
