@@ -37,7 +37,7 @@
     "@types/to-ico": "1.1.1",
     "@vue/runtime-dom": "3.2.47",
     "core-js": "3.28.0",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-prettier": "4.2.1",
