@@ -33,7 +33,7 @@
     "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/recaptcha": "1.1.1",
     "@nuxtjs/style-resources": "1.2.1",
-    "@nuxtjs/stylelint-module": "4.2.0",
+    "@nuxtjs/stylelint-module": "5.0.0",
     "@types/to-ico": "1.1.1",
     "@vue/runtime-dom": "3.2.47",
     "core-js": "3.29.0",
