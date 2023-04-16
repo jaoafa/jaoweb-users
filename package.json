@@ -52,7 +52,7 @@
     "sass-loader": "10.4.1",
     "stylelint": "15.5.0",
     "stylelint-config-prettier": "9.0.5",
-    "stylelint-config-standard": "32.0.0",
+    "stylelint-config-standard": "33.0.0",
     "stylelint-scss": "4.6.0",
     "to-ico": "1.1.5",
     "vue-calendar-heatmap": "0.8.4",
