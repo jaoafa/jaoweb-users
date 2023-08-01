@@ -49,7 +49,7 @@
     "prettier": "2.8.8",
     "ress": "5.0.2",
     "sass": "1.64.2",
-    "sass-loader": "10.4.1",
+    "sass-loader": "13.3.2",
     "stylelint": "15.10.2",
     "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "34.0.0",
